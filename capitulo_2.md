@@ -1,6 +1,4 @@
----
-title: Oracle Academy: Database Programing with SQL, Parte 2
----
+Oracle Academy: Database Programing with SQL, Parte 2
 
 * [Volver al inicio](index.html)
 
@@ -38,10 +36,10 @@ DESC departments;
 ~~~
 
 |Table|Column|Data Type|Length|Precision|Scale|Primary Key| Nullable|Default|Comment|
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---| 
 |DEPARTMENTS|DEPARTMENT_ID|NUMBER|-|4|0|1|-|-|-|
 |-|DEPARTMENT_NAME|VARCHAR2|30|-|-|-|-|-|-|
-|-|MANAGER_ID|NUMBER|-|6|0|-| |-|-|
+|-|MANAGER_ID|NUMBER|-|6|0|-| |-|-|         
 |-|LOCATION_ID|NUMBER|-|4|0|-| |-|-|
 
 ### Operador de Concatenación
@@ -61,7 +59,7 @@ SELECT department_id||' '||department_name FROM departments;
 ~~~
 
 |DEPARTMENT_ID\|\|''\|\|DEPARTMENT_NAME|
-|---|
+|---| 
 |10 Administration|
 |20 Marketing|
 |50 Shipping|
@@ -77,7 +75,7 @@ SELECT department_id||' '||department_name AS "Department Info" FROM departments
 ~~~
 
 |Department Info|
-|---|
+|---| 
 |10 Administration|
 |20 Marketing|
 |50 Shipping|
@@ -265,7 +263,7 @@ SELECT city, state_province, country_id FROM locations WHERE country_id IN('UK',
 Se retornan los siguientes valores:
 
 |CITY|STATE_PROVINCE|COUNTRY_ID|
-|---|---|---|
+|---|---|---|  
 |Toronto|Ontario|CA|
 |Oxford|Oxford|UK|
 
@@ -277,7 +275,7 @@ Esta cláusula es de utilidad a la hora de buscar coincidencias con caracteres, 
 
 ~~~sql
 SELECY last_name FROM employees WHERE last_name LIKE '_o%';
-~~~
+~~~ 
 
 Retorna los siguientes valores
 
@@ -325,9 +323,9 @@ Devuelve los siguientes resultados:
 
 |LAST_NAME|COMISSION_PCT|
 |---|---|
-|Zlotkey|.2|
-|Abel|.3|
-|Taylor|.2|
+|Zlotkey|.2|  
+|Abel|.3|  
+|Taylor|.2|  
 |Grant|.15|
 
 Que son todos los empleados que tienen asignada un porcentaje de comisión.

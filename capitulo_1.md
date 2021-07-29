@@ -1,4 +1,4 @@
----
+
 [//]: # "Esta es una forma bien estrafalaria de hacer comentarios en Markdown,
 de acuerdo con la especificación CommonMark en la que se basa Github. ¿Qué
 tiene esto de importante? ¿Por qué no usar comentarios HTML normales? pues esta
@@ -29,7 +29,7 @@ Oracle Academy: Database Programing with SQL, Parte 1
   - [Operadores aritméticos](#operadores-aritméticos)
   - [Valores NULL](#valores-null)
   - [Alias](#alias)
-
+  
 ## 1.1: Oracle Application Express
 
 ### Software de Aplicación vs Software de Sistema
@@ -122,7 +122,7 @@ El proceso es simple, mediante Oracle APEX se introduce una sentencia SQL, luego
 Dependiendo de las funciones que realicen, las sentencias SQL pueden agruparse en:
 
 * **Lenguaje de manipulación de datos (DML):** Comienzan con `INSERT`, `UPDATE`, `DELET` o `MERGE` y se utilizan para introducir, cambiar o eliminar filas existentes.
-
+  
 * **Lenguaje de definición de datos (DDL):** crean, cambian y eliminan estructuras de la BBDD, incluten las palabras clave `CREATE`, `ALTER`, `DROP`, `RENAME` y `TRUNCATE`.
 
 * **Lenguaje de control de transacciones (TCL):** sirven para gestionar los cambios realizados por las sentencias DML, los cuales deben ejecutarse mediante `COMMIT`, `ROLLBACK` y `SAVEPOINT`, agrupados en transacciones lógicas.
@@ -253,7 +253,7 @@ _Ejemplo de cómo el orden de prioridad cambia cuando intervienen paréntesis y 
 En SQL, **la palabra reservada `NULL` representa un valor que no está disponible, es desconocido o no existe. Esto es diferente del concepto del cero o del caractér en blanco o espacio, los cuales sí representan un valor.** Las bases de datos utilizan el marcador `NULL` para representar dichos valores desconocidos. Dicha distinción es importante porque el RDBMS se comporta de forma diferente cuando se encuentra con ellos.
 
 * Para cualquier valor de una expresión aritmética donde intervenga el valor null, el resultado es null.
-
+  
 * Esto, sin embargo, es diferente a realizar una división entre cero, lo cual es un error aritmético.
 
 ~~~sql
