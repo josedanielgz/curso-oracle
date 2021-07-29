@@ -55,20 +55,29 @@ Los dos componentes principales de Oracle APEX que más intervienen en el curso 
 
 Generalmente al consultar información se requiere buscar un subjuego de los datos en el sistema según unos criterios específicos, esto se puede lograr mediante el lenguaje SQL.
 
-Las cuentas de Oracle APEX no suministran por defecto ninguna tabla ni datos, para cargar datos en el sistema se aconseja consultar las guías de APEX IAcademy y los recursos para estudiantes del Member Hub
+Las cuentas de Oracle APEX no suministran por defecto ninguna tabla ni datos, para cargar datos en el sistema se aconseja consultar las guías de APEX IAcademy y los recursos para estudiantes del Member Hub.
 
 ### Sentencia SELECT
 
 Una de las instrucciones básicas presentes en el lenguaje SQL es la sentecia `SELECT`, la cual devuelve filas de una tabla:
 
 ~~~sql
-SELECT * FROM <table_name>
+SELECT * FROM [table_name]
 ~~~
 
 También se puede devolver un subjuego de los datos suministrando las columnas como argumentos:
 
 ~~~sql
-SELECT <col_1, col_2, col_3, ...> FROM <table_name>
+SELECT [col_1, col_2, col_3, ...]
+FROM [table_name]
+~~~
+
+Por ejemplo:
+
+~~~sql
+SELECT first_name, last_name, job_id
+FROM employees
+WHERE job_id = 'SA_REP';
 ~~~
 
 Es importante recalcar que las sentencias SQL en general son sensibles a los errores ortográficos o referenciales (tratar de localizar elementos que no existen) eso incluye por ejemplo, escribir mal el nomre de las columnas o las tablas, o el mismo `SELECT`.
@@ -87,7 +96,7 @@ Una base de datos relacional permite relacionar tablas por medio de un campo com
 |CA|Canada|2|
 |DE|Germany|1|
 |UK|United Kingdom|1|
-|US|United States|2|
+|US|United States of America|2|
 
 Las bases de datos utilizadas en negocios reales pueden poseer
 muchas tablas, donde cada una comparte algún campo en común con alguna otra.
