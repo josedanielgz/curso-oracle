@@ -50,7 +50,7 @@ En donde las palabras reservadas significan:
 
 - `MINVALUE n`: especifica el valor mínimo de la secuencia.
 
-- `NOMINVALUE`: especifica un valor máximo de 1 para una secuencia ascendente y
+- `NOMINVALUE`: especifica un valor mínimo de 1 para una secuencia ascendente y
   uno de `-(10^26)` para una secuencia descendente (por defecto).
 
 - `CYCLE`|`NOCYCLE` especifica si la secuencia sigue generando valores después de
@@ -239,14 +239,16 @@ se realice una confirmación o un `ROLLBACK`.
 
 Los intervalos (números no secuenciales) se pueden generar:
 
-- Al realizar un rollback de una sentencia que contiene una
-  secuencia, se pierde el número.
+- **Al realizar un rollback de una sentencia que contiene una
+  secuencia, SE PIERDE EL NÚMERO.**
 
-- Un fallo en el sistema. Si se almacenan los valores de la
-  secuencia en la memoria caché y ocurre un fallo en el sistema, esos valores se pierden.
+- Un fallo en el sistema. **Si se almacenan los valores de la
+  secuencia en la memoria caché y ocurre un fallo en el sistema, ESOS VALORES SE PIERDEN.**
 
 - El uso de la misma secuencia para varias tablas. Si lo hace así, cada tabla
   puede contener intervalos en los números secuenciales.
+
+### Visualización del siguiente valor
 
 Si la secuencia se ha creado con `NOCACHE`, es posible ver el
 siguiente valor de seciencia disponible sin aumentarlo con la
@@ -317,6 +319,10 @@ completas, lo que obviamente es un proceso costoso. Afortunadamente Oracle, al
 igual que otros servidores de BD cuentan con un mecanismo para hacer más eficaz
 el proceso de búsqueda, los índices.
 
+[//]: # "Posiblemente sea una buena idea
+..
+profundizar acerca de qué son los índices y qué hacen."
+
 Un índice en Oracle Server es un objeto de esquema que puede acelerar la
 recuperación de filas mediante un puntero. Los índices se pueden crear
 explícita o automáticamente. **Si no hay un índice en la columna seleccionada, se
@@ -385,13 +391,10 @@ ON wf_countries(region_id);
 
 ### ¿Cuándo NO crear un índice?
 
-Hay ocasiones en que los índices no son tan beneficiosos o son directamente
-contraproducentes:
-
-- Cada operación DML (`INSERT`, `UPDATE` o `DELETE`) que se realiza en una
-  tabla con índices indica actualizar dichos índices. Entre más índices
-  asociados a una tabla, más esfuerzo debe hacer una tabla para actualizarlos
-  todos después de cada operación.
+Cada operación DML (`INSERT`, `UPDATE` o `DELETE`) que se realiza en una tabla
+con índices indica actualizar dichos índices. Entre más índices asociados a una
+tabla, más esfuerzo debe hacer una tabla para actualizarlos todos después de
+cada operación.
 
 **Por lo general, no merece la pena crear un índice si:**
 
@@ -475,7 +478,9 @@ FROM employees WHERE UPPER(last_name) = 'KING';
 Los índices basados en funciones definidos con las palabras claves
 `UPPER(column_name` y `LOWER(column_name` permiten realizar búsquedas no
 sensibles a mayúsuclas y minúsculas. Esto es útil, por ejemplo, si no sabe en
-qué forma se han introducido los apellidos de la BD de empleados. **Este tipo de índices no se utilizan a menos que se modifique la consulta para que la expresión en la cláusula `WHERE` coincida con el utilizado al crear el índice, o en su defecto cree uno que sí coincida con la consulta.**
+qué forma se han introducido los apellidos de la BD de empleados. **Oracle no
+utiliza este tipo de índices a menos que el índice se haya creado con la misma
+expresión en la cláusula `WHERE` de la consulta.**
 
 Otro ejemplo de consulta que podría utilizar el índice
 anteriormente creado es:
@@ -485,10 +490,11 @@ SELECT *
 FROM employees WHERE UPPER(last_name) LIKE 'KIN%';
 ```
 
-**PARA GARANTIZAR QUE ORACLE SERVER UTILICE EL ÍNDICE EN LUGAR
-DE REALIZAR UNA EXPLORACIÓN DE TABLA COMPLETA, ASEGÚRESE DE QUE EL VALOR DE LA FUNCIÓN NO SEA NULO EN CONSULTAS POSTERIORES.**
+**PARA GARANTIZAR QUE ORACLE SERVER UTILICE EL ÍNDICE EN LUGAR DE REALIZAR UNA
+EXPLORACIÓN DE TABLA COMPLETA, ASEGÚRESE DE QUE EL VALOR DEVUELTO POR UNA
+FUNCIÓN NO SEA NULO EN CONSULTAS POSTERIORES.**
 
-Siguiendo con el ejemplo de índice anterior, esta sería una forma
+Por ejemplo, para el índice anterior, esta sería una forma
 de garantizar esta restricción:
 
 ```sql
