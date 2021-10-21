@@ -48,7 +48,7 @@ el caso de este curso, sigue la convención
 ### Seguridad del Sistema
 
 Este nivel de seguridad abarca el acceso y uso de la BD en el
-nivel del sistema, y comprende más de 10 privilegios. Existen
+nivel del sistema, y comprende más de 100 privilegios. Existen
 privilegios en este nivel que sólo suele tener un DBA, como la
 capacidad de crear o eliminar usuarios, eliminar tablas o
 realizar copias de seguridad. Algunos de esos privilegios son:
@@ -86,7 +86,7 @@ El DBA puede usar la sentencia `GRANT` para asignar privilegios
 del sistema a un usuario. Estos determinan lo que el usuario
 puede realizar en el nivel de la BD.
 
-Una vez el usuario ha otorgado los privilegios, el usuario los
+Una vez se le han otorgado los privilegios, el usuario los
 puede utilizar inmediatamente:
 
 ```sql
@@ -153,7 +153,7 @@ objeto:
   otorgar un privilegio es lo mismo que otorga el privilegio en la propia
   tabla.
 
-### Palabra clave Public
+### Palabra clave PUBLIC
 
 Un propietario de una tabla puede otorgar acceso a todos los
 usuarios mediante la palabra clave `PUBLIC`. En el siguiente ejemplo, se permite a todos los usuarios del sistema consultar
@@ -196,7 +196,7 @@ Un mensaje de error de la forma `table or view does not exists` significa que:
 - Asignó un nombre a una tabla o vista que no existe.
 
 - Intenta realizar una operación en una tabla o vista para
-  la que no tiene el privilegio adecuado.
+  la que no tiene privilegios adecuados.
 
 ### Visualización de Privilegios
 
@@ -245,8 +245,8 @@ En la sentencia anterior, le asignamos el role `manager` a `jennifer_cho`, por l
 **Otorgar varios roles a un usuario le asocia todos los
 privilegios asociados a todos los roles.**
 
-Cabe aclarar que `CREATE ROLE` es un privilegio del sistema que
-no se ha emitido para las clases de Academy.
+**Cabe aclarar que `CREATE ROLE` es un privilegio del sistema que
+no se ha emitido para las clases de Academy.**
 
 ### Asignación de Privilegios de Objeto
 
@@ -340,6 +340,7 @@ ON clients
 TO scott_king
 WITH GRANT OPTION;
 ```
+### Palabra clave PUBLIC
 
 **El propietario de una tabla puede otorgar acceso a TODOS LOS USUARIOS mediante la palabra `PUBLIC`.**
 
@@ -418,7 +419,7 @@ públicos.
 Nota: el privilegio `CREATE PUBLIC SYNONYM` no se ha otorgado a
 los alummnos de Academy.
 
-### Roles Vs Privilegios
+### Roles y Privilegios
 
 Los roles y privilegios difieren de varias formas:
 
@@ -454,6 +455,11 @@ usuarios locales acceso a los datos en una BD remota.**
 
 Esta es una funcionalidad no disponible en Oracle APEX, ya que
 no hay una conexión constante a la BD.
+
+[//]: # "Investigar sobre Oracle CREATE DATABASE LINK"
+
+Si los usuarios de la BD B desearan acceder a los datos de la BD
+A, se debe definir un enlace, el cual queda almacenado en la BD B.
 
 Para que esta conexión se produzca, cada BD del sistema distribuído debe
 tener un nombre de BD global único.
